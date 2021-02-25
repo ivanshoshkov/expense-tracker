@@ -6,11 +6,30 @@ import FormControlLabel from "@material-ui/core/FormControlLabel";
 import React from "react";
 import classes from "./login.module.css";
 import Logo from "../Logo";
-function Login() {
-  const [state, setState] = React.useState({ checked: true });
+
+function Login(props) {
+  const [state, setState] = React.useState({ checked: false });
+
+  const [input1, setInput1] = React.useState(false);
+  const [input2, setInput2] = React.useState(false);
+  const [checkbox, setcheckbox] = React.useState(false);
+  const [readyLog, setreadyLog] = React.useState(false);
 
   const toggleInput = (event) => {
     setState({ ...state, [event.target.name]: event.target.checked });
+  };
+
+  const usernameHandler = (event) => {
+    if (event.target.value === "123123") {
+      setInput1(true);
+      console.log("user:", input1);
+    }
+  };
+  const passwordHandler = (event) => {
+    if (event.target.value === "123123") {
+      setInput2(true);
+      console.log("pass:", input2);
+    }
   };
 
   return (
@@ -21,13 +40,18 @@ function Login() {
           Please login
         </Typography>
         <Typography variant="caption" style={{ marginBottom: 14 }}>
-          This is a dummy form so whatever you type will "log" you in
+          This is a dummy form. Just check the checkbox and you can log in.
         </Typography>
-        <TextField label="Username" style={{ marginBottom: 14 }} />
+        <TextField
+          label="Username"
+          style={{ marginBottom: 14 }}
+          onChange={(event) => usernameHandler(event)}
+        />
         <TextField
           label="Password"
           type="password"
           style={{ marginBottom: 14 }}
+          onChange={(event) => passwordHandler(event)}
         />
         <div style={{ marginBottom: 14 }}>
           <FormControlLabel
@@ -42,7 +66,12 @@ function Login() {
             label="I confirm that the water is wet"
           />
         </div>
-        <Button variant="contained" color="primary">
+        <Button
+          variant="contained"
+          color="primary"
+          disabled={state.checked == true ? false : true}
+          onClick={props.click}
+        >
           Login
         </Button>
       </div>
