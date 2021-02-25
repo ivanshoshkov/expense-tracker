@@ -1,0 +1,50 @@
+.loadercontainer {
+  position: absolute;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  background: #0000003b;
+  z-index: 11;
+  animation: myopacity 500ms ease-in-out;
+}
+
+@keyframes myopacity {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.loader {
+  position: absolute;
+  margin: 0 0 2em;
+  height: 100px;
+  width: 20%;
+  text-align: center;
+  padding: 1em;
+  margin: 0 auto 1em;
+  display: inline-block;
+  vertical-align: top;
+  animation: mymove 5s ease-in-out infinite;
+}
+
+@keyframes mymove {
+  from {
+    transform: rotate(0);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.loaderSubtitle {
+  position: absolute;
+  top: 56%;
+  color: white;
+}

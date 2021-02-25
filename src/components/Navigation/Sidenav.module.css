@@ -1,0 +1,26 @@
+.Sidenav {
+  position: absolute;
+  width: 360px;
+  height: 100vh;
+  background-color: white;
+  box-shadow: 4px 0px 16px rgba(0, 0, 0, 0.16);
+  transition: 300ms ease-out;
+  transform: translateX(-80%);
+}
+
+.sidenavOpen {
+  transform: translateX(0%);
+}
+
+.TopNav {
+  position: absolute;
+  right: 0;
+}
+.ToggleButton {
+  position: absolute;
+  right: 26px;
+  top: 12px;
+  cursor: pointer;
+}
+
+

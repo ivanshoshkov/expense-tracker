@@ -1,0 +1,66 @@
+@keyframes yourAnimation {
+  0% {
+    transform: translateY(50%);
+    opacity: 0;
+  }
+  100% {
+    transform: rotate(xx) translateY(0);
+    opacity: 1;
+  }
+}
+
+.animateup {
+  animation: yourAnimation 100ms infinite 0s linear;
+  background-color: tomato !important;
+}
+
+.balance_header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.balance_container {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  margin-top: 30px;
+}
+
+.balance_controlls {
+  display: flex;
+  align-items: center;
+}
+
+.balance_item {
+  margin-right: 40px;
+}
+
+.balance_sum {
+  color: #2456a3;
+}
+
+.balance_expense {
+  color: rgb(255, 0, 119);
+}
+
+.name_container {
+  display: flex;
+  align-items: center;
+}
+
+.name_avatar {
+  width: 46px !important;
+  height: 46px !important;
+  margin-right: 14px;
+  background-color: #2457a36c;
+}
+
+.button_controll {
+  margin-left: 10px;
+}
+
+.button123{
+  margin-top: 24px !important;
+  margin-right: 10px !important;
+}

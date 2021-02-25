@@ -1,0 +1,9 @@
+{
+    "beneficiary": "Ivan Shoshkov",
+    "iban": "LT11 3211 1011 3311 0911",
+    "bic": "REVOLT11",
+    "ammount": 10,
+    "currency": "BGN",
+    "currencyName": "Bulgarian Lev",
+    "active": true
+}

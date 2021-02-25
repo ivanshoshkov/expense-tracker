@@ -1,0 +1,11 @@
+{
+    "firstName": "Morty",
+    "lastName": "James",
+    "iban": "LT11 3211 1011 3311 0911",
+    "bic": "REVOLT11",
+    "ammount": "23,490",
+    "expenses": "1,232",
+    "currency": "BGN",
+    "currencyName": "Bulgarian Lev",
+    "active": true
+}
