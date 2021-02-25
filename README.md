@@ -11,4 +11,4 @@ This is a financial application with functionalities such as:
 7) Exchange currency
 8) Login
 
-Tech stack: React, Redux, React-router
+Tech stack: React, Redux, React-router, Material UI

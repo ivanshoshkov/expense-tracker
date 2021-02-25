@@ -1,17 +1,21 @@
-import React from "react";
+import React, { useState } from "react";
 import Navbar from "./components/Navigation/Navbar";
 import "./App.css";
+import Login from "./components/Login/Login";
 function App() {
+
+  const [logged, setlogged] = useState(false)
+
   return (
     <div className="App">
-      <Navbar />
+      {logged ? <Navbar /> : <Login/>}
     </div>
   );
 }
 
 export default App;
 
-// TODO: 
+// TODO:
 
 // - make a link from the "morty" name so the account information can be seen
 //
