@@ -1,12 +1,12 @@
 import React, { useState } from "react";
 import Avatar from "@material-ui/core/Avatar";
-import IvanAvatar from "../../../../uploads/avatar.jpg";
+import IvanAvatar from "../../../uploads/avatar.jpg";
 import Menu from "@material-ui/core/Menu";
 import MenuItem from "@material-ui/core/MenuItem";
 import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
 import IconButton from "@material-ui/core/IconButton";
 import MoreVertIcon from "@material-ui/icons/MoreVert";
-import classes from "../accountdetails.module.css";
+import classes from "./accountdetails.module.css";
 import Typography from "@material-ui/core/Typography";
 import Button from "@material-ui/core/Button";
 
