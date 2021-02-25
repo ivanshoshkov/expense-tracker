@@ -1,26 +1,14 @@
-DATA:
+This is a financial application with functionalities such as:
 
-ACCOUNT INFO
-    -- beneficiary
-    -- iban
-    -- bic
-    -- ammount
-    -- currency
-    -- currencyName
-    -- active
+// In the process of building
 
-ACCOUNT BALANCE
-    -- ammount
-    -- income transactions - expences
-EXPENCES
-    -- sum of all outbound transactions
+1) Add a new account 
+2) Change accounts
+3) Send money
+4) Add money
+5) Add a new contact
+6) Invite a friend
+7) Exchange currency
+8) Login
 
-TRANSACTIONS
-    -- income transactions
-    -- outbound transactions
-
-    to
-    date
-    type
-    ammount
-
+Tech stack: React, Redux, React-router
