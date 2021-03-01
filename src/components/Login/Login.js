@@ -6,14 +6,13 @@ import FormControlLabel from "@material-ui/core/FormControlLabel";
 import React from "react";
 import classes from "./login.module.css";
 import Logo from "../Logo";
+import Loader from "../Loader/Loader";
 
 function Login(props) {
   const [state, setState] = React.useState({ checked: false });
 
   const [input1, setInput1] = React.useState(false);
   const [input2, setInput2] = React.useState(false);
-  const [checkbox, setcheckbox] = React.useState(false);
-  const [readyLog, setreadyLog] = React.useState(false);
 
   const toggleInput = (event) => {
     setState({ ...state, [event.target.name]: event.target.checked });
@@ -69,7 +68,7 @@ function Login(props) {
         <Button
           variant="contained"
           color="primary"
-          disabled={state.checked == true ? false : true}
+          disabled={state.checked === true ? false : true}
           onClick={props.click}
         >
           Login

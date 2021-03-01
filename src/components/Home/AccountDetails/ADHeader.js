@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Avatar from "@material-ui/core/Avatar";
 import IvanAvatar from "../../../uploads/avatar.jpg";
 import Menu from "@material-ui/core/Menu";
@@ -9,10 +9,17 @@ import MoreVertIcon from "@material-ui/icons/MoreVert";
 import classes from "./accountdetails.module.css";
 import Typography from "@material-ui/core/Typography";
 import Button from "@material-ui/core/Button";
+import { connect } from "react-redux";
+import Loader from "../../Loader/Loader";
 
 //REDUX
 
 function ADHeader(props) {
+  // const [getuser, setgetuser] = useState([])
+  // useEffect(() => {
+  //   setgetuser(props.userState)
+  // }, [input])
+
   const [anchorEl, setAnchorEl] = useState(null);
   const [anchorEl2, setAnchorEl2] = useState(null);
 
@@ -32,13 +39,14 @@ function ADHeader(props) {
     setAnchorEl2(null);
   };
   // return props.displayBalance();
-
+  console.log(props.dispatch({type:'SEND_MONEY'}));
+  const user = props.userState;
   return (
     <div className={classes.balance_header}>
       <div className={classes.name_container}>
         <Avatar className={classes.name_avatar} src={IvanAvatar}></Avatar>
         <Typography variant="h6" className={classes.pageTitle}>
-          Hello, XXXX
+          Hello {user.firstName}
         </Typography>
       </div>
       <div className={classes.balance_controlls}>
@@ -88,4 +96,9 @@ function ADHeader(props) {
   );
 }
 
-export default ADHeader;
+function mapStateToProps(state) {
+  const userState = state[0].user;
+  return { userState };
+}
+
+export default connect(mapStateToProps)(ADHeader);
