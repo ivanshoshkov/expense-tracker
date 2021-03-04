@@ -33,3 +33,15 @@ export function displayBalance() {
     payload: false
   };
 }
+export function changeAccount(event) {
+  return {
+    type: "CHANGE_ACCOUNT",
+    payload: event.target.innerText
+  };
+}
+export function selectedAccount(account) {
+  return {
+    type: "SELECTED_ACCOUNT",
+    payload: account
+  };
+}

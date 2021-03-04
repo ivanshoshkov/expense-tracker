@@ -1,5 +1,5 @@
 import Container from "../../Layout/Container";
-import React from "react";
+import React, { useState } from "react";
 import classes from "./accountdetails.module.css";
 
 //REDUX
@@ -10,12 +10,13 @@ import BalanceWidget from "./BalanceWidget";
 import ADControlls from "./ADControlls";
 
 function AccountDetails(props) {
+  const [showBalance, setShowBalance] = useState(true);
   return (
     <Wrapper>
       <Container class={classes.animateup} ofStyle="Container">
-        <ADHeader />
-        <BalanceWidget />
-        <ADControlls/>
+        <ADHeader show={showBalance} toggleBalance={() => setShowBalance((balance) => !balance)} />
+        <BalanceWidget show={showBalance} />
+        <ADControlls />
       </Container>
     </Wrapper>
   );

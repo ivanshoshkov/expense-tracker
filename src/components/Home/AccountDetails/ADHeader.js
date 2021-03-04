@@ -11,14 +11,29 @@ import Typography from "@material-ui/core/Typography";
 import Button from "@material-ui/core/Button";
 import { connect } from "react-redux";
 import Loader from "../../Loader/Loader";
-
 //REDUX
 
 function ADHeader(props) {
-  // const [getuser, setgetuser] = useState([])
-  // useEffect(() => {
-  //   setgetuser(props.userState)
-  // }, [input])
+  const [receivedState, setReceivedState] = useState();
+  const [selectedAccountName, setSelectedAccountName] = useState();
+
+  useEffect(() => {
+    setReceivedState(props.returnedState);
+  }, []);
+
+  useEffect(() => {
+    props.dispatch({ type: "CHANGE_ACCOUNT", payload: selectedAccountName });
+    if (selectedAccountName) {
+      receivedState.accounts.forEach((account) => {
+        if (account.currency === selectedAccountName) {
+          props.dispatch({
+            type: "SELECTED_ACCOUNT",
+            payload: account,
+          });
+        }
+      });
+    } else return;
+  }, [selectedAccountName]);
 
   const [anchorEl, setAnchorEl] = useState(null);
   const [anchorEl2, setAnchorEl2] = useState(null);
@@ -32,21 +47,39 @@ function ADHeader(props) {
 
   const handleCloseAndBalance = () => {
     setAnchorEl2(null);
+    props.toggleBalance();
   };
 
   const handleClose = () => {
     setAnchorEl(null);
     setAnchorEl2(null);
   };
+
+  const closeAndSelectHandler = (e) => {
+    const textValue = e.target.innerText;
+    setSelectedAccountName(textValue);
+    setAnchorEl(null);
+  };
+
+  const AccountsSelectHandler = () => {
+    return receivedState.accounts.map((account) => {
+      return (
+        <MenuItem
+          key={account.currency}
+          onClick={(e) => closeAndSelectHandler(e)}
+        >
+          {account.currency}
+        </MenuItem>
+      );
+    });
+  };
   // return props.displayBalance();
-  console.log(props.dispatch({type:'SEND_MONEY'}));
-  const user = props.userState;
-  return (
+  return receivedState ? (
     <div className={classes.balance_header}>
       <div className={classes.name_container}>
         <Avatar className={classes.name_avatar} src={IvanAvatar}></Avatar>
         <Typography variant="h6" className={classes.pageTitle}>
-          Hello {user.firstName}
+          Hello {receivedState.user.firstName}
         </Typography>
       </div>
       <div className={classes.balance_controlls}>
@@ -57,7 +90,9 @@ function ADHeader(props) {
             onClick={handleClick}
             startIcon={<ExpandMoreIcon />}
           >
-            XXXX
+            {selectedAccountName
+              ? selectedAccountName
+              : receivedState.selectedAccount.currency}
           </Button>
           <Menu
             id="simple-menu"
@@ -66,9 +101,8 @@ function ADHeader(props) {
             open={Boolean(anchorEl)}
             onClose={handleClose}
           >
-            <MenuItem onClick={handleClose}>XXXX</MenuItem>
-            <MenuItem onClick={handleClose}>XXXX</MenuItem>
-            <MenuItem onClick={handleClose}>Create new account</MenuItem>
+            <MenuItem onClick={handleClose}>+ new account</MenuItem>
+            <AccountsSelectHandler />
           </Menu>
         </div>
         <div>
@@ -88,17 +122,21 @@ function ADHeader(props) {
             open={Boolean(anchorEl2)}
             onClose={handleClose}
           >
-            <MenuItem onClick={handleCloseAndBalance}>XXXX</MenuItem>
+            <MenuItem onClick={handleCloseAndBalance}>
+              { !props.show ? "Show balance" : "Hide balance"}
+            </MenuItem>
           </Menu>
         </div>
       </div>
     </div>
+  ) : (
+    <Loader />
   );
 }
 
 function mapStateToProps(state) {
-  const userState = state[0].user;
-  return { userState };
+  const returnedState = state;
+  return { returnedState };
 }
 
 export default connect(mapStateToProps)(ADHeader);
