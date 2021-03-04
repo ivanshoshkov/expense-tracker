@@ -7,9 +7,14 @@ import { connect } from "react-redux";
 import classes from "./SendMoney.module.css";
 import SendIcon from "@material-ui/icons/Send";
 
+import Snackbar from "@material-ui/core/Snackbar";
+import IconButton from "@material-ui/core/IconButton";
+import CloseIcon from "@material-ui/icons/Close";
+
 function AddMoney(props) {
   const [receivedState, setReceivedState] = useState();
   const [ammount, setammount] = useState("");
+  const [snackbar, setSnackbar] = useState(false);
 
   useEffect(() => {
     setReceivedState(props.returnedState);
@@ -19,6 +24,8 @@ function AddMoney(props) {
   const addMoneyHandler = () => {
     if (ammount <= 0) return;
     props.dispatch({ type: "SEND_MONEY", payload: ammount });
+    if (ammount > receivedState.selectedAccount.ammount) return;
+    setSnackbar((snackbar) => !snackbar);
   };
 
   return (
@@ -78,6 +85,34 @@ function AddMoney(props) {
         >
           Send money
         </Button>
+        <Snackbar
+          anchorOrigin={{
+            vertical: "bottom",
+            horizontal: "right",
+          }}
+          open={snackbar}
+          onClose={() => setSnackbar(false)}
+          autoHideDuration={3000}
+          message={
+            receivedState
+              ? `${Number(ammount).toLocaleString()} ${
+                  receivedState.selectedAccount.currency
+                } sent successfully!`
+              : null
+          }
+          action={
+            <div>
+              <IconButton
+                size="small"
+                aria-label="close"
+                color="inherit"
+                onClick={() => setSnackbar(false)}
+              >
+                <CloseIcon fontSize="small" />
+              </IconButton>
+            </div>
+          }
+        />
       </Container>
     </Wrapper>
   );

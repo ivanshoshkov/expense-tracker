@@ -8,10 +8,15 @@ import AccountBalanceWalletOutlinedIcon from "@material-ui/icons/AccountBalanceW
 import { Link } from "react-router-dom";
 import classes from "./AddMoney.module.css";
 
+import Snackbar from "@material-ui/core/Snackbar";
+import IconButton from "@material-ui/core/IconButton";
+import CloseIcon from "@material-ui/icons/Close";
+
+
 function AddMoney(props) {
   const [receivedState, setReceivedState] = useState();
   const [ammount, setammount] = useState("");
-
+  const [snackbar, setSnackbar] = useState(false);
   useEffect(() => {
     setReceivedState(props.returnedState);
     // eslint-disable-next-line
@@ -20,6 +25,7 @@ function AddMoney(props) {
   const addMoneyHandler = () => {
     if (ammount <= 0) return;
     props.dispatch({ type: "ADD_MONEY", payload: ammount });
+    setSnackbar(snackbar => !snackbar)
   };
 
   return (
@@ -27,7 +33,7 @@ function AddMoney(props) {
       <Container ofStyle="Container">
         <div style={{ display: "flex", flexDirection: "column" }}>
           <Typography variant="h5" style={{ marginBottom: 14 }}>
-            ADD MONEY
+            Add money
           </Typography>
           <TextField
             id="standard-basic"
@@ -79,6 +85,28 @@ function AddMoney(props) {
         >
           Add money
         </Button>
+        <Snackbar
+          anchorOrigin={{
+            vertical: "bottom",
+            horizontal: "right",
+          }}
+          open={snackbar}
+          onClose={() => setSnackbar(false)}
+          autoHideDuration={3000}
+          message={receivedState ? (`${Number(ammount).toLocaleString()} ${receivedState.selectedAccount.currency} added successfully!`): null}
+          action={
+            <div>
+              <IconButton
+                size="small"
+                aria-label="close"
+                color="inherit"
+                onClick={() => setSnackbar(false)}
+              >
+                <CloseIcon fontSize="small" />
+              </IconButton>
+            </div>
+          }
+        />
       </Container>
     </Wrapper>
   );
