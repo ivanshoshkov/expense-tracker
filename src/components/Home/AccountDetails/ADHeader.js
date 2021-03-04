@@ -11,6 +11,8 @@ import Typography from "@material-ui/core/Typography";
 import Button from "@material-ui/core/Button";
 import { connect } from "react-redux";
 import Loader from "../../Loader/Loader";
+import { Link } from "react-router-dom";
+
 //REDUX
 
 function ADHeader(props) {
@@ -19,6 +21,7 @@ function ADHeader(props) {
 
   useEffect(() => {
     setReceivedState(props.returnedState);
+    // eslint-disable-next-line
   }, []);
 
   useEffect(() => {
@@ -31,8 +34,10 @@ function ADHeader(props) {
             payload: account,
           });
         }
+        // eslint-disable-next-line
       });
     } else return;
+    // eslint-disable-next-line
   }, [selectedAccountName]);
 
   const [anchorEl, setAnchorEl] = useState(null);
@@ -101,7 +106,7 @@ function ADHeader(props) {
             open={Boolean(anchorEl)}
             onClose={handleClose}
           >
-            <MenuItem onClick={handleClose}>+ new account</MenuItem>
+            <MenuItem></MenuItem>
             <AccountsSelectHandler />
           </Menu>
         </div>
@@ -123,7 +128,10 @@ function ADHeader(props) {
             onClose={handleClose}
           >
             <MenuItem onClick={handleCloseAndBalance}>
-              { !props.show ? "Show balance" : "Hide balance"}
+              {!props.show ? "Show balance" : "Hide balance"}
+            </MenuItem>
+            <MenuItem onClick={handleClose} component={Link} to="/new-account">
+              Add new account
             </MenuItem>
           </Menu>
         </div>

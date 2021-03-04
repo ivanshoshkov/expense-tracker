@@ -6,30 +6,14 @@ import FormControlLabel from "@material-ui/core/FormControlLabel";
 import React from "react";
 import classes from "./login.module.css";
 import Logo from "../Logo";
-import Loader from "../Loader/Loader";
 
 function Login(props) {
   const [state, setState] = React.useState({ checked: false });
-
-  const [input1, setInput1] = React.useState(false);
-  const [input2, setInput2] = React.useState(false);
 
   const toggleInput = (event) => {
     setState({ ...state, [event.target.name]: event.target.checked });
   };
 
-  const usernameHandler = (event) => {
-    if (event.target.value === "123123") {
-      setInput1(true);
-      console.log("user:", input1);
-    }
-  };
-  const passwordHandler = (event) => {
-    if (event.target.value === "123123") {
-      setInput2(true);
-      console.log("pass:", input2);
-    }
-  };
 
   return (
     <div className={classes.login__container}>
@@ -44,13 +28,11 @@ function Login(props) {
         <TextField
           label="Username"
           style={{ marginBottom: 14 }}
-          onChange={(event) => usernameHandler(event)}
         />
         <TextField
           label="Password"
           type="password"
           style={{ marginBottom: 14 }}
-          onChange={(event) => passwordHandler(event)}
         />
         <div style={{ marginBottom: 14 }}>
           <FormControlLabel

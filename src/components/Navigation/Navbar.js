@@ -17,6 +17,7 @@ import InviteFriendControlls from "../Promotions/InviteFriendControlls";
 import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 import SendMoney from "../SendMoney/SendMoney";
 import AddMoney from "../AddMoney/AddMoney";
+import NewAccount from "../NewAccount/NewAccount";
 
 function Navbar(props) {
   const [open, setOpen] = useState(false);
@@ -103,6 +104,7 @@ function Navbar(props) {
         <Route exact path="/"  title="Home" component={Home}   />
         <Route path="/send-money" title="Send Money" component={SendMoney} />
         <Route path="/add-money" title="Add Money" component={AddMoney} />
+        <Route path="/new-account" title="Add Money" component={NewAccount} />
         <Route
           path="/invite-friend"
           title="Add Money"
