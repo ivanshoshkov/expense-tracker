@@ -1,11 +1,12 @@
 .carddetails{
     max-width: 250px;
-    background-color: rgb(112, 112, 112);
+    background-color:rgb(63 81 181);
     border-radius: 12px;
     padding: 12px;
     margin-bottom: 20px;
     color: white;
 }
+
 
 .carddetailssecondary{
     display: flex;

@@ -36,6 +36,7 @@ function AddMoney(props) {
             Send money
           </Typography>
           <TextField
+            variant="outlined"
             id="standard-basic"
             label="Ammount"
             type="number"

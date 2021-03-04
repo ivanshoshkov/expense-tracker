@@ -5,7 +5,7 @@ import TextField from "@material-ui/core/TextField";
 function InviteFriendControlls(props) {
   const [error, setError] = React.useState(false);
   const [errorMessage, seterrorMessage] = React.useState();
-  
+
   const [email, setEmail] = React.useState("");
 
   const sendEmailString = () => {
@@ -31,11 +31,12 @@ function InviteFriendControlls(props) {
       </Typography>
       <div style={{ marginTop: 20, display: "flex" }}>
         <TextField
+          variant="outlined"
           error={error}
           id="standard-basic"
           label="Email"
           helperText={errorMessage}
-          onChange={event => setEmail(event.target.value)}
+          onChange={(event) => setEmail(event.target.value)}
           value={email}
         />
 
