@@ -74,6 +74,24 @@ const mainReducer = (state = defaultState, action) => {
         ...state,
         selectedAccount: action.payload,
       };
+    case "ADD_MONEY":
+      state.selectedAccount.ammount =
+        state.selectedAccount.ammount + Number(action.payload);
+      return {
+        ...state,
+      };
+    case "SEND_MONEY":
+      if (state.selectedAccount.ammount < action.payload) {
+        return state;
+      }
+      state.selectedAccount.ammount =
+        state.selectedAccount.ammount - Number(action.payload);
+      state.selectedAccount.expenses =
+        state.selectedAccount.expenses + Number(action.payload);
+
+      return {
+        ...state,
+      };
     default:
       return { ...state };
   }

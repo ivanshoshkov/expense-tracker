@@ -45,3 +45,15 @@ export function selectedAccount(account) {
     payload: account
   };
 }
+export function addMoney(ammount) {
+  return {
+    type: "ADD_MONEY",
+    payload: ammount
+  };
+}
+export function addMoney(ammount) {
+  return {
+    type: "SEND_MONEY",
+    payload: ammount
+  };
+}
