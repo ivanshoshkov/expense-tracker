@@ -81,7 +81,7 @@ function InviteFriend() {
         <Container ofStyle="Container">
           <InviteFriendSteps />
           <ComponentImage
-            style={{ position: "absolute", bottom: 0, right: -20, zIndex: 2 }}
+            style={{ position: "absolute", bottom: 0, right: 8, zIndex: 2 }}
           />
           <Snackbar
             anchorOrigin={{
