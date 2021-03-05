@@ -17,7 +17,7 @@ function NewAccount() {
 
   useEffect(() => {
     setCurr(currienciesjson);
-    console.log(curr)
+    console.log(curr);
   }, []);
 
   const handleChange = (event) => {
@@ -33,31 +33,30 @@ function NewAccount() {
             variant="outlined"
             id="standard-basic"
             label="First name"
-            style={{ width: 150, marginBottom: 18 }}
+            style={{ marginBottom: 18 }}
           />
           <TextField
             variant="outlined"
             id="standard-basic"
             label="Last name"
-            style={{ width: 150, marginBottom: 18 }}
+            style={{ marginBottom: 18 }}
           />
           <TextField
             variant="outlined"
             id="standard-basic"
             label="IBAN"
-            style={{ width: 150, marginBottom: 18 }}
+            style={{ marginBottom: 18 }}
           />
           <TextField
             variant="outlined"
             id="standard-basic"
             label="BIC"
-            style={{ width: 150, marginBottom: 18 }}
+            style={{ marginBottom: 18 }}
           />
-          <FormControl
-            variant="outlined"
-            style={{ width: 150, marginBottom: 18 }}
-          >
-            <InputLabel id="demo-simple-select-outlined-label">Currency</InputLabel>
+          <FormControl variant="outlined" style={{ marginBottom: 18 }}>
+            <InputLabel id="demo-simple-select-outlined-label">
+              Currency
+            </InputLabel>
             <Select
               labelId="demo-simple-select-outlined-label"
               id="demo-simple-select-outlined"
@@ -68,17 +67,18 @@ function NewAccount() {
               <MenuItem value="">
                 <em>None</em>
               </MenuItem>
-              {curr && (Object.keys(curr).map((item, i) => (
-                <MenuItem key={i} value={i}>
-                  <div> {curr[item].name}</div>
-                </MenuItem>
-              )))}
+              {curr &&
+                Object.keys(curr).map((item, i) => (
+                  <MenuItem key={i} value={i}>
+                    <div> {curr[item].name}</div>
+                  </MenuItem>
+                ))}
             </Select>
           </FormControl>
+          <Button variant="contained" color="primary">
+            Add account
+          </Button>
         </div>
-        <Button variant="contained" color="primary">
-          Add account
-        </Button>
       </Container>
     </Wrapper>
   );
