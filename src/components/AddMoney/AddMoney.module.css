@@ -5,6 +5,12 @@
   padding: 12px;
   margin-bottom: 20px;
   color: white;
+  cursor: pointer;
+  transition: 220ms;
+}
+
+.carddetails:hover {
+  background-color: rgb(92 112 224);
 }
 
 .carddetailssecondary {
@@ -36,11 +42,11 @@
   }
 }
 
-.loaderdetails{
-    display: flex;
-    flex-direction: column;
+.loaderdetails {
+  display: flex;
+  flex-direction: column;
 }
 
-.loaderdetail{
-    margin-bottom: 10px !important;
+.loaderdetail {
+  margin-bottom: 10px !important;
 }

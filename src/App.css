@@ -4,3 +4,6 @@
   height: 100vh;
   background-color: #e5e5e5 !important;
 }
+.MuiInputBase-root.Mui-disabled {
+  color: black !important ;
+}

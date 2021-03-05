@@ -1,15 +1,46 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import Container from "../Layout/Container";
 import Wrapper from "../Layout/Wrapper";
 import TextField from "@material-ui/core/TextField";
 import { Button } from "@material-ui/core";
 
-function NewAccount(props) {
+import currienciesjson from "./currencies.json";
+
+import InputLabel from "@material-ui/core/InputLabel";
+import MenuItem from "@material-ui/core/MenuItem";
+import FormControl from "@material-ui/core/FormControl";
+import Select from "@material-ui/core/Select";
+
+function NewAccount() {
+  const [curr, setCurr] = useState();
+  const [age, setAge] = useState();
+
+  useEffect(() => {
+    setCurr(currienciesjson);
+    console.log(curr)
+  }, []);
+
+  const handleChange = (event) => {
+    setAge(event.target.value);
+  };
+
   return (
     <Wrapper>
       <Container ofStyle="Container">
         <h1>New Account</h1>
         <div style={{ display: "flex", flexDirection: "column" }}>
+          <TextField
+            variant="outlined"
+            id="standard-basic"
+            label="First name"
+            style={{ width: 150, marginBottom: 18 }}
+          />
+          <TextField
+            variant="outlined"
+            id="standard-basic"
+            label="Last name"
+            style={{ width: 150, marginBottom: 18 }}
+          />
           <TextField
             variant="outlined"
             id="standard-basic"
@@ -19,15 +50,31 @@ function NewAccount(props) {
           <TextField
             variant="outlined"
             id="standard-basic"
-            label="Currency long"
+            label="BIC"
             style={{ width: 150, marginBottom: 18 }}
           />
-          <TextField
+          <FormControl
             variant="outlined"
-            id="standard-basic"
-            label="Currency short"
             style={{ width: 150, marginBottom: 18 }}
-          />
+          >
+            <InputLabel id="demo-simple-select-outlined-label">Currency</InputLabel>
+            <Select
+              labelId="demo-simple-select-outlined-label"
+              id="demo-simple-select-outlined"
+              value={age}
+              onChange={handleChange}
+              label="Currency"
+            >
+              <MenuItem value="">
+                <em>None</em>
+              </MenuItem>
+              {curr && (Object.keys(curr).map((item, i) => (
+                <MenuItem key={i} value={i}>
+                  <div> {curr[item].name}</div>
+                </MenuItem>
+              )))}
+            </Select>
+          </FormControl>
         </div>
         <Button variant="contained" color="primary">
           Add account

@@ -91,7 +91,7 @@ function AddMoney(props) {
           </div>
 
           <Button
-          style={{width:'100%'}}
+            style={{ width: "100%" }}
             variant="contained"
             color="primary"
             onClick={() => setmodal(false)}
